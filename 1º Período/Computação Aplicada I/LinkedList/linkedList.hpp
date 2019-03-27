@@ -7,7 +7,7 @@ class Node {
 
 class LinkedList {
     private:
-        Node* front_;
+        Node* list_;
     
     public:
         LinkedList();
