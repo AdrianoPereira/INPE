@@ -1,50 +1,78 @@
 #include "stack.hpp"
+#define SIZE_DEFAULT 5
+#define EXTRA 10
 
 #include <cstdlib>
 #include <iostream>
 
-Stack::Stack() { top_ = NULL; }
-
-Stack::Stack(int size) { 
-    top_ = new Node[size];
+Stack::Stack() { 
+    arr_ = new int[SIZE_DEFAULT];
+    maxsize_ = SIZE_DEFAULT;
+    indextop_ = -1;
 }
 
-int Stack::size() {
-    return 1;
+Stack::Stack(int size) { 
+    arr_ = new int[size];
+    maxsize_ = size;
+    indextop_ = -1;
 }
 
 void Stack::push(int value) {
-    Node* temp = new Node;
-    temp->data = value;
-    temp->next = top_;
-    top_ = temp;
-    size_++;
-}
+   if(isFull()) {
+        std::cout << "A pilha atingiu sua capacidade máxima! Alocando mais memória...\n";
+        maxsize_ += EXTRA;
+        int* aux;
+        aux = new int[maxsize_];
+        // for(int x=0; x<maxsize_; x++) std::cout << aux[x] << std::endl;
+        if(aux == NULL) {
+            std::cout << "Memória insuficiente!" << std::endl;
+           exit(1);
+        }
 
-int Stack::top() {
-    return top_->data;
-}
-
-bool Stack::isEmpty() {
-    return top_ == NULL;
+        for(int x=0; x<=indextop_; x++) 
+            aux[x] = arr_[x];
+        
+        delete[] arr_;
+        arr_ = new int[maxsize_];
+        arr_ = aux;
+        delete[] aux;
+   }
+   arr_[++indextop_+1] = value;
+   std::cout << top() << " adicionado" << std::endl;
 }
 
 void Stack::pop() {
     if(!isEmpty()) {
-        Node* temp = top_;
-        top_ = temp->next;
-        delete temp;
-        size_--;
+        indextop_--;
     }else {
-        std::cout << "Stack is empty!\n" ;
+        std::cout << "A pilha está vazia!\n";
     }
+   
+}
+
+int Stack::top() {
+    return arr_[indextop_];
+}
+
+bool Stack::isEmpty() {
+    return indextop_ < 0;
+}
+
+bool Stack::isFull() {
+    return indextop_ >= maxsize_-2;
+}
+    
+
+int Stack::size() {
+    return indextop_+1;
+}
+
+void Stack::display() {
+   for(int x=indextop_; x>=0; x--) {
+       std::cout << arr_[x] << std::endl;
+   }
 }
 
 Stack::~Stack() {
-    while(!isEmpty()) {
-        Node* temp = top_;
-        top_ = temp->next;
-        delete temp;
-    }
-    std::cout << "Destructor called" << std::endl;
+    delete[] arr_;
 }

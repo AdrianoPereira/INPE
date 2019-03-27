@@ -1,27 +1,23 @@
 #ifndef __STACK_HPP__
 #define __STACK_HPP__
 
-class Node {
-    public:
-        int data;
-        Node* next;
-};
-
 class Stack {
     private:
-        Node* top_;
-        
-        int size_;
+        int* arr_;
+        int maxsize_, indextop_;
         
     public:
-        Stack();
+        Stack();    
         Stack(int size);
-        int size();
-        void push(int value);
-        int top();        
-        bool isEmpty();
-        void pop();
 
+        void push(int value);
+        void pop(); 
+        int top();
+        bool isEmpty();
+        bool isFull();
+        int size();        
+        void display();
+        
         ~Stack();
 };
 

@@ -4,22 +4,39 @@
 using namespace std;
 
 int main() {
-    Stack stack1(42);
+    Stack s1(10);
+    // Stack s2;
+
+    s1.push(1);
+    s1.push(2);
+    s1.push(3);
+    // s1.push(4);
+    // s1.push(5);
+    // s1.push(6);
+    // s1.push(10);
+    // s1.push(20);
+    // s1.push(30);
+    s1.push(40);
+
+
+
+    s1.pop();
+    s1.pop();
+
+    s1.display();
+
+    // cout << endl;
     
-    stack1.push(1);
-    stack1.push(2);
-    stack1.push(3);
-    stack1.push(4);
-    stack1.push(5);
-
-    while(!stack1.isEmpty()) {
-        cout << stack1.top() << endl;
-        stack1.pop();        
-    }
-
-
-    cout << "Run finish" << endl;
-
+    // s2.push(1);
+    // s2.pop();
+    // s2.push(2);
+    // s2.push(3);
+    // s2.pop();
+    // s2.push(4);
+    // s2.push(5);
+    // s2.pop();
+    // s2.push(6);
+    // s2.display();
 
     
     return 0;
