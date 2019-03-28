@@ -1,1 +1,3 @@
-# INPE
+# LISTA 01
+Cada pasta possui a implementação de suas respectivas estrutura de dados. Cada uma delas contém três arquivos, sendo eles: as declarações das classes e métodos, a implementação e o programa com o método principal fazendo a chamada do cabeçalho.
+O programa principal foi implementado de forma que o usuário possa fazer a interação através de menus com todos os métodos disponíveis em suas estruturas.

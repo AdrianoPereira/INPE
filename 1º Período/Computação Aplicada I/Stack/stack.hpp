@@ -1,3 +1,9 @@
+/** IMPLEMENTAÇÃO DA ESTRUTURA DE DADOS PILHA 27/03/2017
+ * @AUTHOR: ADRIANO P. ALMEIDA
+ **/
+
+//Declaração do cabeçalho
+
 #ifndef __STACK_HPP__
 #define __STACK_HPP__
 
